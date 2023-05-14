@@ -4,8 +4,8 @@ from flask_restful import Resource, Api,reqparse
 import requests
 import json
 
-PATH = '../DB'
-#PATH = '.'
+#PATH = '../database'
+PATH = '.'
 
 
 class GetUser(Resource):
@@ -76,13 +76,13 @@ class UpdateUser(Resource):
             resp.status_code = 401
             return resp
         
-        if attribute == 'builds_created':
-            ar[username][attribute].append(value)
-        elif attribute == 'compliments' or attribute == 'warnings':
-            ar[username][attribute] = int(ar[username][attribute]) + value
-            ar[username]['position'] = (int(ar[username]['compliments']) - int(ar[username]['warnings'])) / 3
-        else:
-            ar[username][attribute] = value
+        # if attribute == 'builds_created':
+        #     ar[username][attribute].append(value)
+        # elif attribute == 'compliments' or attribute == 'warnings':
+        #     ar[username][attribute] = int(ar[username][attribute]) + value
+        #     ar[username]['position'] = (int(ar[username]['compliments']) - int(ar[username]['warnings'])) / 3
+        # else:
+        ar[username][attribute] = value
         
         with open(f'{PATH}/user.csv','w') as csvfile:
             csvfile.write(str(ar))
@@ -163,21 +163,150 @@ class UpdateForm(Resource):
         return resp
 
 
-class GetForm(Resource):
+class GetPCPart(Resource):
     def post(self):
         someJson = request.get_json(force=True)
-        form_id = someJson.get('form_id')
+        part_id = someJson.get('part_id')
 
-        with open(f'{PATH}/form.csv','r') as csvfile:
+        with open(f'{PATH}/pc_part.csv','r') as csvfile:
             ar = csvfile.read()
         ar = eval(ar)
         keys = ar.keys()
-        if form_id not in keys:
-            resp = jsonify({'error':'form_id is not valid'})
+        if part_id not in keys:
+            resp = jsonify({'error':'part_id is not valid'})
             resp.status_code = 401
             return resp
         
-        resp = jsonify({'info': ar[form_id]})
+        resp = jsonify({'info': ar[part_id]})
+        resp.status_code = 200
+        return resp
+
+
+class AddPCPart(Resource):
+    def post(self):
+        someJson = request.get_json(force=True)
+        part_id = someJson.get('part_id')
+        compatibility = someJson.get('compatibility')
+        name = someJson.get('name')
+        price = someJson.get('price')
+
+        with open(f'{PATH}/pc_part.csv','r') as csvfile:
+            ar = csvfile.read()
+        ar = eval(ar)
+        keys = ar.keys()
+        if part_id in keys:
+            resp = jsonify({'error':'part_id is taken'})
+            resp.status_code = 401
+            return resp
+        ar[part_id] = {'part_id': part_id, 'compatibility': compatibility, 'name': name, 'price': price}
+        
+        with open(f'{PATH}/pc_part.csv','w') as csvfile:
+            csvfile.write(str(ar))
+        
+        resp = jsonify({'info':'form added'})
+        resp.status_code = 200
+        return resp
+
+
+class UpdatePCPart(Resource):
+    def post(self):
+        someJson = request.get_json(force=True)
+        part_id = someJson.get('part_id')
+        attribute = someJson.get('attribute')
+        value = someJson.get('value')
+
+        with open(f'{PATH}/pc_part.csv','r') as csvfile:
+            ar = csvfile.read()
+        ar = eval(ar)
+        keys = ar.keys()
+        if part_id not in keys:
+            resp = jsonify({'error':'part_id is not valid'})
+            resp.status_code = 401
+            return resp
+        
+        ar[part_id][attribute] = value
+        
+        with open(f'{PATH}/pc_part.csv','w') as csvfile:
+            csvfile.write(str(ar))
+        resp = jsonify({'info': 'pc_part attribute changed'})
+        resp.status_code = 200
+        return resp
+
+
+class GetBuild(Resource):
+    def post(self):
+        someJson = request.get_json(force=True)
+        build_id = someJson.get('build_id')
+
+        with open(f'{PATH}/pc_build.csv','r') as csvfile:
+            ar = csvfile.read()
+        ar = eval(ar)
+        keys = ar.keys()
+        if build_id not in keys:
+            resp = jsonify({'error':'build_id is not valid'})
+            resp.status_code = 401
+            return resp
+        
+        resp = jsonify({'info': ar[build_id]})
+        resp.status_code = 200
+        return resp
+
+
+class AddBuild(Resource):
+    def post(self):
+        someJson = request.get_json(force=True)
+        build_id = someJson.get('build_id')
+        rating = someJson.get('rating')
+        name = someJson.get('name')
+        comments = someJson.get('comments')
+        parts = someJson.get('parts')
+        
+        price = 0
+        with open(f'{PATH}/pc_part.csv','r') as csvfile:
+            ar_parts = csvfile.read()
+        ar_parts = eval(ar_parts)
+        for i in parts:
+            price += int(ar_parts[i]['price'])
+
+        with open(f'{PATH}/pc_build.csv','r') as csvfile:
+            ar = csvfile.read()
+        ar = eval(ar)
+        keys = ar.keys()
+        if build_id in keys:
+            resp = jsonify({'error':'build_id is taken'})
+            resp.status_code = 401
+            return resp
+        ar[build_id] = {'build_id': build_id, 'rating': rating, 'name': name, 'price': price, 'comments': comments, 'parts': parts}
+        
+        with open(f'{PATH}/pc_build.csv','w') as csvfile:
+            csvfile.write(str(ar))
+        
+        resp = jsonify({'info':'form added'})
+        resp.status_code = 200
+        return resp
+
+
+class UpdateBuild(Resource):
+    def post(self):
+        someJson = request.get_json(force=True)
+        build_id = someJson.get('build_id')
+        attribute = someJson.get('attribute')
+        value = someJson.get('value')
+
+        with open(f'{PATH}/pc_build.csv','r') as csvfile:
+            ar = csvfile.read()
+        ar = eval(ar)
+        keys = ar.keys()
+        if build_id not in keys:
+            resp = jsonify({'error':'build_id is not valid'})
+            resp.status_code = 401
+            return resp
+        
+        ar[build_id][attribute] = value
+        
+        with open(f'{PATH}/pc_build.csv','w') as csvfile:
+            csvfile.write(str(ar))
+        resp = jsonify({'info': 'pc_build attribute changed'})
         resp.status_code = 200
         return resp
 
@@ -191,3 +320,9 @@ api.add_resource(UpdateUser, '/user/update', strict_slashes=False)
 api.add_resource(AddForm, '/form/add', strict_slashes=False)
 api.add_resource(GetForm, '/form/get', strict_slashes=False)
 api.add_resource(UpdateForm, '/form/update', strict_slashes=False)
+api.add_resource(AddPCPart, '/part/add', strict_slashes=False)
+api.add_resource(GetPCPart, '/part/get', strict_slashes=False)
+api.add_resource(UpdatePCPart, '/part/update', strict_slashes=False)
+api.add_resource(AddBuild, '/build/add', strict_slashes=False)
+api.add_resource(GetBuild, '/build/get', strict_slashes=False)
+api.add_resource(UpdateBuild, '/build/update', strict_slashes=False)
