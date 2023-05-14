@@ -79,6 +79,78 @@ def update_form_in_db(form_id, filled_by, filled_for, text, type, status):
         data = r_json['error']
     return data
 
+
+def add_part_to_db(part_id, compatibility, name, price):
+    body = {'part_id': part_id, "compatibility": compatibility, "name": name, "price": price}
+    req_url = f'{api_route}/part/add'
+    r = requests.post(req_url, json=body)
+    r_json = r.json()
+    try:
+        data = r_json['info']
+    except:
+        data = r_json['error']
+    return data
+
+
+def get_part_from_db(part_id):
+    body = {'part_id': part_id}
+    req_url = f'{api_route}/part/get'
+    r = requests.post(req_url, json=body)
+    r_json = r.json()
+    try:
+        data = r_json['info']
+    except:
+        data = r_json['error']
+    return data
+
+
+def update_part_in_db(part_id, compatibility, name, price):
+    body = {'part_id': part_id, "compatibility": compatibility, "name": name, "price": price}
+    req_url = f'{api_route}/part/update'
+    r = requests.post(req_url, json=body)
+    r_json = r.json()
+    try:
+        data = r_json['info']
+    except:
+        data = r_json['error']
+    return data
+
+
+def add_build_to_db(build_id, rating, name, comments, parts):
+    body = {'build_id': build_id, "rating": rating, "name": name, "comments": comments, "parts": parts}
+    req_url = f'{api_route}/build/add'
+    r = requests.post(req_url, json=body)
+    r_json = r.json()
+    try:
+        data = r_json['info']
+    except:
+        data = r_json['error']
+    return data
+
+
+def get_build_from_db(build_id):
+    body = {'build_id': build_id}
+    req_url = f'{api_route}/build/get'
+    r = requests.post(req_url, json=body)
+    r_json = r.json()
+    try:
+        data = r_json['info']
+    except:
+        data = r_json['error']
+    return data
+
+
+def update_part_in_db(build_id, rating, name, comments, parts):
+    body = {'build_id': build_id, "rating": rating, "name": name, "comments": comments, "parts": parts}
+    req_url = f'{api_route}/build/update'
+    r = requests.post(req_url, json=body)
+    r_json = r.json()
+    try:
+        data = r_json['info']
+    except:
+        data = r_json['error']
+    return data
+
 # a = add_user_to_db('Alex', '123', 'admin')
 # print(a)
 
