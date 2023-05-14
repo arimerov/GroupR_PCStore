@@ -4,8 +4,8 @@ from flask_restful import Resource, Api,reqparse
 import requests
 import json
 
-#PATH = '../database'
-PATH = '.'
+PATH = '../DB'
+#PATH = '.'
 
 
 class GetUser(Resource):
