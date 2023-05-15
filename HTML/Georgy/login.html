@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+  </head>
+
+
+  <body>
+      <h1>Log-In</h1>
+    <div id="loginDiv">
+      <p>Username: </p>
+      <input type="text" placeholder="Enter Username" name="username" required id="usernameIn">
+
+      <p>Password: </p>
+      <input type="text" placeholder="Enter Password" name="password" required id="passwordIn">
+      
+      <button type="button" onclick="login()" id="login">Login</button>
+    </div>
+
+  </body>
+  
+  <script src="index.js"></script>
+  
+  <script type="text/javascript">
+    async function login(){
+      var user = document.getElementById('usernameIn').value;
+      var password = document.getElementById('passwordIn').value;
+      var response = await fetch('http://127.0.0.1:8002/login?username=' + user + '&password=' + password)
+      var ans = response.text()
+      ans.then(
+        function(value) { console.log(value)}, // return value is an int (0 == index.html; 1 == home.html (for customer); 2 == admin.html (for Employee); 3 == admin.html
+        function(error) { console.log(error)}
+      )
+    }
+  </script>
+</html>

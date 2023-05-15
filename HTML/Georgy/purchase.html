@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+  </head>
+  <style>
+  
+  </style>
+  <body>
+	  <h1>Purchase</h1>
+    <div id="purchDiv">
+      <h2>Shipping Address:</h2>
+      <p>Address: </p>
+      <input type="text" placeholder="Address" name="address" required id="addressIn">
+      <input type="text" placeholder="Apartment Number?" name="apt" id="aptIn">
+      <input type="text" placeholder="City" name="city" required id="cityIn">
+      <input type="text" placeholder="State" name="state" required id="stateIn">
+      <input type="text" placeholder="ZIP-Code" name="zip" required id="zipIn">
+      <br>
+      <h2>Confirm Password:</h2>
+      <input type="text" placeholder="Confirm Password" name="confPass" required id="confPassIn">
+      
+      <h2>Available Funds: </h2> <span id="availableFunds"></span>
+      <h2>PC Total Cost: </h2> <h2 id="totalCost">12</h2>
+      <button type="button" class="button purchButton" id="purchFullBuild">Purchase Full-Build</button>
+    </div>
+
+  </body>
+  
+  <script src="index.js"></script>
+
+  <script type="text/javascript">
+    async function purchase(){
+      var username = document.getElementById('username').value;
+      var pc_id = document.getElementById('pc_id').value;
+      var response = await fetch('http://127.0.0.1:8002/purchase?username=' + user + '&pc_id=' + pc_id)
+      var ans = response.text()
+      ans.then(
+        function(value) { console.log(value)}, // return value is 0 if error, 1 if ok
+        function(error) { console.log(error)}
+      )
+    }
+  </script>
+</html>
