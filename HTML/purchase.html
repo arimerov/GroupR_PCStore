@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <style>
+    
+  </style>
+  <body>
+	  <h1>Purchase</h1>
+    <div id="purchDiv">
+      <h2>Shipping Address:</h2>
+      <p>Address: </p>
+      <input type="text" placeholder="Address" name="address" required id="addressIn">
+      <input type="text" placeholder="Apartment Number?" name="apt" id="aptIn">
+      <input type="text" placeholder="City" name="city" required id="cityIn">
+      <input type="text" placeholder="State" name="state" required id="stateIn">
+      <input type="text" placeholder="ZIP-Code" name="zip" required id="zipIn">
+      <br>
+      <h2>Confirm Password:</h2>
+      <input type="text" placeholder="Confirm Password" name="confPass" required id="confPassIn">
+      
+      <h2>Available Funds: </h2> <span id="availableFunds"></span>
+      <h2>PC Total Cost: </h2> <span id="totalCost"></span>
+      <button type="button" class="button purchButton" id="purchFullBuild">Purchase Full-Build</button>
+    </div>
+
+  </body>
+  
+  <script src="index.js"></script>
+</html>

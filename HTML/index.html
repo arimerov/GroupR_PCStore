@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <body>
+	  <div id="navBar">
+      <button type="button" onclick="location.href='index.html'" class="button navButton">Home</button> <!-- If this is clicked, reset iframe to src="home.html"; Use JS function, change href attr to 'onClick=' -->
+      <button type="button" onclick="directiFrame('custom.html')" class="button navButton">Contact</button>
+      <button type="button" onclick="directiFrame('login.html')" class="button navButton">Log-in</button> <!-- If already logged in, change this to "log out" -->
+    </div>
+
+    <iframe src="home.html" width=100% overflow=hidden height=800px id="iframe"></iframe>
+
+    <!-- <iframe src="home.html" onload="changelinks(this, link)"></iframe> -->
+
+  </body>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="index.js"></script>
+  <!--
+  <script type="text/javascript">
+    function changelinks(iframe, link) {
+      var frame = $( iframe ).get(0).contentDocument;
+
+      $( 'a', frame ).each(function() {
+          $(this).attr('href', link);
+      });
+    }
+
+    </script> -->
+    <!-- Changes iframe based on navbar click -->
+  <script type="text/javascript">
+
+    function directiFrame(link){
+      $( '#iframe' ).attr('src', link);
+    }
+  </script>
+
+
+</html>

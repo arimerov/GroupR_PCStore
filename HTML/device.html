@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <style>
+    
+  </style>
+  <body>
+    <!-- Jinja? should we use over JS -->
+    <!-- When you click on a PC in catalog. It calls JSfunct(device.html, DeviceID) -->
+    <!-- device.html hold all neccessary elements and the JS takes text from csv file and puts it into the elements to displayed. -->
+	  <h1>Device</h1>
+    
+    <h2 id="devName">Name</h2>
+    
+    <h3>Rating: <span id="devRating"></span> </h3>
+    <!-- This span should only appear if the customer has previously purchased this build -->
+    <span id="ratePC"> </span>
+    <!-- ^Will be a form from 1-5 with a submit button  -->
+    
+    <h3>Specs: <span id="devSpecs"></span> </h3>
+    
+    <button type="button" class="button devButton">Purchase Full-Build</button>
+    
+    <div id="commentDiv">
+    </div>
+  </body>
+  
+  <script src="index.js"></script>
+</html>
