@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chad-Good Politziya Tech Store</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
   </head>
   <style>
     
@@ -14,24 +14,25 @@
   <body>
 	  <h1>Catalog</h1>
 
-    <div id="catalogDiv" style="width=100%; height=600px; margin:auto;">
+    <div id="catalogDiv">
       <!-- each span hold 3 items --->
-      <span id="row1" style="width=100%; height=200px;">
-        <a href="" id="r1item1"> <img src="" id="r1img1" alt="PC1"> </a>
-        <a href="" id="r1item2"> <img src="" id="r1img2" alt="PC2"> </a>
-        <a href="" id="r1item3"> <img src="" id="r1img3" alt="PC3"> </a> 
+      <span id="row1"> 
+        <!-- resizing image doesn't matter when it is nested in an <a> tag. Do the onclick stuff that Georgy said. -->
+        <a href="" id="r1item1"> <img src="" class="catalogImage" id="r1img1" alt="PC1"> </a>
+        <a href="" id="r1item2"> <img src="" class="catalogImage" id="r1img2" alt="PC2"> </a>
+        <a href="" id="r1item3"> <img src="" class="catalogImage" id="r1img3" alt="PC3"> </a> 
       </span>
       <br>
-      <span id="row2" style="width=100%; height=200px;"> 
-        <a href="" id="r2item1"> <img src="" id="r2img1" alt="PC4"> </a>
-        <a href="" id="r2item2"> <img src="" id="r2img2" alt="PC5"> </a>
-        <a href="" id="r2item3"> <img src="" id="r2img3" alt="PC6"> </a>
+      <span id="row2"> 
+        <a href="" id="r2item1"> <img src="" class="catalogImage" id="r2img1" alt="PC4"> </a>
+        <a href="" id="r2item2"> <img src="" class="catalogImage" id="r2img2" alt="PC5"> </a>
+        <a href="" id="r2item3"> <img src="" class="catalogImage" id="r2img3" alt="PC6"> </a>
       </span>
       <br>
-      <span id="row3" style="width=100%; height=200px;"> 
-        <a href="" id="r3item1"> <img src="" id="r3img1" alt="PC7"> </a>
-        <a href="" id="r3item2"> <img src="" id="r3img2" alt="PC8"> </a>
-        <a href="" id="r3item3"> <img src="" id="r3img3" alt="PC9"> </a>
+      <span id="row3"> 
+        <a href="" id="r3item1"> <img src="" class="catalogImage" id="r3img1" alt="PC7"> </a>
+        <a href="" id="r3item2"> <img src="" class="catalogImage" id="r3img2" alt="PC8"> </a>
+        <a href="" id="r3item3"> <img src="" class="catalogImage" id="r3img3" alt="PC9"> </a>
       </span>
     </div>
     <button type="button" id="button prePage">Previous Page</button>
