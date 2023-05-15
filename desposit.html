@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+  </head>
+  <style>
+    
+  </style>
+  <body>
+	  <h1>Deposit Money Into Customer Account</h1>
+    <p>Credit/Debit Card #: </p> 
+    <input type="text" placeholder="Credit Card #" name="creditCard" required id="CCIn">
+    <p>Expiration (MM/YY): [Must not be expired!] </p> 
+    <input type="text" placeholder="Expiration" name="Expiration" id="ExpirationIn">
+    <p>CCV: </p> 
+    <input type="text" placeholder="CCV" name="CCV" required id="CCVIn">
+    <p>ZIP Code: </p> 
+    <input type="text" placeholder="ZIP-Code" name="zip" required id="cardZIPIn">
+    <p>Amount to Deposit: </p> 
+    <input type="text" placeholder="Amount" name="amount" required id="ammountIn">
+    <button type="button" class="button finalDeposButton">Finalize Deposit</button>
+  </body>
+
+  
+  <script src="index.js"></script>
+
+  <script type="text/javascript">
+    async function deposit(){
+      var money = document.getElementById('addFunds').value;
+      var response = await fetch('http://127.0.0.1:8002/deposit?username=' + user + '&money=' + money)
+      var ans = response.text()
+      ans.then(
+        function(value) { console.log(value)}, // return value is -1 if error, new balance if ok
+        function(error) { console.log(error)}
+      )
+    }
+  </script>
+</html>
