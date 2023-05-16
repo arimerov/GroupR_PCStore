@@ -17,7 +17,7 @@
     <p>Email: </p> <span id="accountEmail"></span>
     <button type="button" class="button changePassButton" id="changePass">Change Password</button>
     <p>Account Funds:</p> <span id="accountFunds"></span>
-    <button type="button" class="button depositButton" id="deposit">Deposit Funds</button>
+    <button type="button" onclick="location.href('deposit.html')" class="button depositButton" id="deposit">Deposit Funds</button>
     <p>User Type: <p> <span id="userType"></span>
     <p>Number of Compliments: </p> <span id="userCompliments"></span>
     <p>Number of Warnings: </p> <span id="userWarnings"></span>
@@ -26,6 +26,19 @@
     <span id="associatedBuilds"></span>
 
   </body>
+
   
-  <script src="index.js"></script>
+  <script src="../JS/script.js"></script>
+
+  <script type="text/javascript">
+    async function deposit(){
+      var money = document.getElementById('addFunds').value;
+      var response = await fetch('http://127.0.0.1:8002/deposit?username=' + user + '&money=' + money)
+      var ans = response.text()
+      ans.then(
+        function(value) { console.log(value)}, // return value is -1 if error, new balance if ok
+        function(error) { console.log(error)}
+      )
+    }
+  </script>
 </html>

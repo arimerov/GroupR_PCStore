@@ -15,7 +15,8 @@
 	  <div id="navBar">
       <button type="button" onclick="location.href='index.html'" class="button" id="navButton">Home</button> <!-- If this is clicked, reset iframe to src="home.html"; Use JS function, change href attr to 'onClick=' -->
       <button type="button" onclick="directiFrame('contact.html')" class="button" id="navButton">Contact</button>
-      <button type="button" onclick="directiFrame('login.html')" class="button" id="navButton">Log-in</button> <!-- If already logged in, change this to "log out" -->
+      <button type="button" onclick="directiFrame('login.html')" class="button" id="logButton">Log-in</button> <!-- If already logged in, change this to "log out" -->
+      <h4 id="userTypeText">Visitor</h4>
     </div>
 
     <iframe src="home.html" width=100% overflow=hidden height=800px id="iframe"></iframe>
@@ -25,25 +26,8 @@
   </body>
   
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-  <script src="index.js"></script>
-  <!--
-  <script type="text/javascript">
-    function changelinks(iframe, link) {
-      var frame = $( iframe ).get(0).contentDocument;
-
-      $( 'a', frame ).each(function() {
-          $(this).attr('href', link);
-      });
-    }
-
-    </script> -->
-    <!-- Changes iframe based on navbar click -->
-  <script type="text/javascript">
-
-    function directiFrame(link){
-      $( '#iframe' ).attr('src', link);
-    }
-  </script>
+  <script src="../JS/script.js"></script>
+  
 
 
 </html>

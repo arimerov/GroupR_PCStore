@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chad-Good Politziya Tech Store</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+  </head>
+  <style>
+    
+  </style>
+  <body>
+    <h1>Deposit Money Into Customer Account</h1>
+    <p>Credit/Debit Card #: </p> 
+    <input type="text" placeholder="Credit Card #" name="creditCard" required id="CCIn">
+    <p>Expiration (MM/YY): [Must not be expired!] </p> 
+    <input type="text" placeholder="Expiration" name="Expiration" id="ExpirationIn">
+    <p>CCV: </p> 
+    <input type="text" placeholder="CCV" name="CCV" required id="CCVIn">
+    <p>ZIP Code: </p> 
+    <input type="text" placeholder="ZIP-Code" name="zip" required id="cardZIPIn">
+    <p>Amount to Deposit: </p> 
+    <input type="text" placeholder="Amount" name="amount" required id="ammountIn">
+    <button type="button" onclick="deposit(username)" class="button finalDeposButton">Finalize Deposit</button>
+  </body>
+
+  
+  <script src="../JS/script.js"></script>
+
+  <script type="text/javascript">
+    // return: '-1' CC not valid, '-2' Expiration not valid, '-3' zip not valid, if ok returns new balance
+    async function deposit(username){
+      var CCIn = document.getElementById('CCIn').value;
+      var ExpirationIn = document.getElementById('ExpirationIn').value;
+      var CCVIn = document.getElementById('CCVIn').value;
+      var cardZIPIn = document.getElementById('cardZIPIn').value;
+      var ammountIn = document.getElementById('ammountIn').value;
+      var response = await fetch('http://127.0.0.1:8002/deposit?username=' + username + '&CCIn=' + CCIn + '&ExpirationIn=' + ExpirationIn + '&CCVIn=' + CCVIn + '&cardZIPIn=' + cardZIPIn + '&ammountIn=' + ammountIn)
+      var ans = response.text()
+      ans.then(
+        function(value) { console.log(value)},
+        function(error) { console.log(error)}
+      )
+    }
+  </script>
+</html>
