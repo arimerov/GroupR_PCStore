@@ -12,7 +12,7 @@
     
   </style>
   <body>
-	  <h1>Catalog</h1>
+	  <h1 class="catalog-heading">Catalog</h1>
 
     <div id="catalogDiv">
       <!-- each span hold 3 items 
@@ -20,12 +20,15 @@
             THUS IDEALLY 6 BUILDS--->
       <span id="row1"> 
         <!-- resizing image doesn't matter when it is nested in an <a> tag. Do the onclick stuff that Georgy said. -->
-        <img src="" onClick="location.href=''" class="catalogImage" id="r1img1" alt="PC1">
-        <img src="" onClick="location.href=''" class="catalogImage" id="r1img2" alt="PC2">
-        <img src="" onClick="location.href=''" class="catalogImage" id="r1img3" alt="PC3">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+        " onClick="location.href=''" class="catalogImage" id="r1img1" alt="PC1">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+        " onClick="location.href=''" class="catalogImage" id="r1img2" alt="PC2">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+        " onClick="location.href=''" class="catalogImage" id="r1img3" alt="PC3">
       </span>
       <br>
-      <span id="row2"> 
+      <!---<span id="row2"> 
         <img src="" onClick="location.href=''" class="catalogImage" id="r2img1" alt="PC4">
         <img src="" onClick="location.href=''" class="catalogImage" id="r2img2" alt="PC5">
         <img src="" onClick="location.href=''" class="catalogImage" id="r2img3" alt="PC6">
@@ -35,11 +38,12 @@
         <img src="" onClick="location.href=''" class="catalogImage" id="r3img1" alt="PC7">
         <img src="" onClick="location.href=''" class="catalogImage" id="r3img2" alt="PC8">
         <img src="" onClick="location.href=''" class="catalogImage" id="r3img3" alt="PC9">
-      </span>
+      </span> -->
     </div>
-    <button type="button" id="button prePage">Previous Page</button>
-    <button type="button" id="button nextPage">Next Page</button>
-
+    <div id="catalogButtonContainer">
+      <button type="button" id="button prePage">Previous Page</button>
+      <button type="button" id="button nextPage">Next Page</button>
+    </div> 
   </body>
   
   <script src="../JS/script.js"></script>

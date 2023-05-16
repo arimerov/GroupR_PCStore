@@ -11,13 +11,23 @@
   <style>
     
   </style>
-  <body>
+  <body onload="checkVisitor()">
 	  <h1>This is the home page</h1>
-    <button type="button" onclick="location.href='custom.html'" class="button homeButton">Custom Build</button>
-    <button type="button" onclick="location.href='catalog.html'" class="button homeButton">Full-Build</button>
-    <button type="button" onclick="location.href='account.html'" class="button homeButton">View Account</button>
-
+    <button type="button" id="viewCustom" onclick="window.location.href='custom.html'" class="button homeButton">Custom Build</button>
+    <button type="button" id="viewFull" onclick="window.location.href='catalog.html'" class="button homeButton">Full-Build</button>
+    <button type="button" id="viewAcc" onclick="window.location.href='profile.html'" class="button homeButton"><p id="viewAccText">View Account</p></button>
   </body>
   
   <script src="../JS/script.js"></script>
+  <script type = 'text/javascript'>
+    function checkVisitor(){
+      var user = parent.document.getElementById('userName');
+      if(user.innerHTML == 'NoName'){
+        var newButton = document.getElementById('viewAcc');
+        var newButtonText = document.getElementById('viewAccText');
+        newButtonText.innerHTML = "Register for Customer";
+        newButton.setAttribute('onclick', "window.location.href=\'register.html\'");
+      }
+    }
+  </script>
 </html>

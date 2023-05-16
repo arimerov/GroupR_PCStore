@@ -11,26 +11,31 @@
   <style>
     
   </style>
-  <body>
+  <body onload="getProfile()">
 	  <h1>Profile</h1>
-    <p>Name: </p> <span id="accountName"></span>
-    <p>Email: </p> <span id="accountEmail"></span>
+    <p id="accountName">Name: </p>
+    <p id="accountEmail">Email: </p>
     <button type="button" class="button changePassButton" id="changePass">Change Password</button>
-    <p>Account Funds:</p> <span id="accountFunds"></span>
-    <button type="button" onclick="location.href('deposit.html')" class="button depositButton" id="deposit">Deposit Funds</button>
-    <p>User Type: <p> <span id="userType"></span>
-    <p>Number of Compliments: </p> <span id="userCompliments"></span>
-    <p>Number of Warnings: </p> <span id="userWarnings"></span>
-    <p>10% off next purchase?</p> <span id="10off"></span>
-    <p>Associated Custom Builds: </p> 
-    <span id="associatedBuilds"></span>
+    <p id="accountFunds">Account Funds: </p>
+    <button type="button" onclick="window.location.href = 'deposit.html'" class="button depositButton" id="deposit">Deposit Funds</button>
+    <p id="userType">User Type: </p>
+    <p id="userCompliments">Number of Compliments: </p>
+    <p id="userWarnings">Number of Warnings: </p>
+    <p id="10off">10% off next purchase?</p>
+    <p id="associatedBuilds">Associated Custom Builds: </p> 
 
   </body>
 
   
   <script src="../JS/script.js"></script>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
+
+
+
+
+
+
     async function deposit(){
       var money = document.getElementById('addFunds').value;
       var response = await fetch('http://127.0.0.1:8002/deposit?username=' + user + '&money=' + money)
@@ -40,5 +45,5 @@
         function(error) { console.log(error)}
       )
     }
-  </script>
+  </script> -->
 </html>

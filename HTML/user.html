@@ -11,13 +11,12 @@
   <style>
     
   </style>
-  <body class="no-margin">
-	  <div id="navBar">
-      <button type="button" onclick="directiFrame('home.html')" class="button" id="navButton">Home</button> <!-- If this is clicked, reset iframe to src="home.html"; Use JS function, change href attr to 'onClick=' -->
+  <body>
+	  <div id="userNavBar">
+      <button type="button" onclick="location.href='index.html'" class="button" id="navButton">Home</button> <!-- If this is clicked, reset iframe to src="home.html"; Use JS function, change href attr to 'onClick=' -->
       <button type="button" onclick="directiFrame('contact.html')" class="button" id="navButton">Contact</button>
-      <button type="button" onclick="directiFrame('login.html')" class="button" id="logButton"><h4 id="logText">Log-In</h4></button> <!-- If already logged in, change this to "log out" -->
+      <button type="button" onclick="logout()" class="button" id="logButton">Log-Out</button> <!-- If already logged in, change this to "log out" -->
       <h4 id="userTypeText">Visitor</h4>
-      <h4 id="userName">NoName</h4>
     </div>
 
     <iframe src="home.html" width=100% overflow=hidden height=800px id="iframe"></iframe>
@@ -26,13 +25,9 @@
 
   </body>
   
-
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script src="../JS/script.js"></script>
   
-  <script type="text/javascript">
-    // document.getElementById('logButton').innerHTML='Log-In';
-  </script>
 
 
 </html>

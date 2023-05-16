@@ -9,12 +9,45 @@
     <link rel="stylesheet" href="../CSS/style.css">
   </head>
   <style>
-    
+    ul {
+      list-style-type: none;
+      margin: 10px;
+      padding: 0;
+    }
+    li {
+      list-style-type: none;
+      margin: 10px;
+      padding: 0;
+    }
+    #adminRow {
+      display: inline-block;
+    }
   </style>
-  <body>
+  <body onload="fillForum()">
 	  <h1>Admin</h1>
+    <div id="forumDiv">
+      <ul id="forumRow">
+        <li id="adminRow"> <span> <ul> <li> Filled By </li> <li> Filled For </li> <li> Text </li> <li> Type </li> <li> Status </li> </ul> </span> </li>
+        <div id="insertRowDiv"> </div>
+
+      </ul>
+
+
+    </div>
 
   </body>
   
   <script src="../JS/script.js"></script>
+  <script type="text/javascript">
+
+    var row = document.createElement('li');
+    row.innerHTML = "<ul> <li id=\"fillBy\"> Filled By </li> <li id=\"fillFor\"> Filled For </li> <li id=\"adminForumText\"> Text </li> <li id=\"forumType\"> Type </li> <li id=\"status\"> Status </li> </ul>";
+    row.setAttribute("id", "adminRow");
+
+    function fillInRow(fillBy, fillFor, Text, Type, Status){
+      row.innerHTML = "<ul> <li id=\"fillBy\"> "+ fillBy +" </li> <li id=\"fillFor\"> "+ fillFor +" </li> <li id=\"adminForumText\"> "+ Text +" </li> <li id=\"forumType\"> "+ Type +" </li> <li id=\"status\"> "+ Status +" </li> </ul>";
+      document.getElementById('insertRowDiv').appendChild(row);
+    }
+
+  </script>
 </html>
