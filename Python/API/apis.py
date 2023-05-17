@@ -355,6 +355,24 @@ class UpdateBuild(Resource):
         return resp
 
 
+class RemoveBuild(Resource):
+    def post(self):
+        someJson = request.get_json(force=True)
+        build_id = someJson.get('build_id')
+
+        with open(f'{PATH}/pc_build.csv','r') as csvfile:
+            ar = csvfile.read()
+        ar = eval(ar)
+        del ar[build_id]
+        
+        with open(f'{PATH}/pc_build.csv','w') as csvfile:
+            csvfile.write(str(ar))
+        resp = jsonify({'info': 'pc_build deleted'})
+        resp.status_code = 200
+        return resp
+
+
+
 apis = Flask(__name__)
 api = Api(apis)
 api.add_resource(AddUser, '/user/add', strict_slashes=False)
@@ -369,6 +387,7 @@ api.add_resource(GetPCPart, '/part/get', strict_slashes=False)
 api.add_resource(GetParts, '/parts/get', strict_slashes=False)
 api.add_resource(UpdatePCPart, '/part/update', strict_slashes=False)
 api.add_resource(AddBuild, '/build/add', strict_slashes=False)
+api.add_resource(RemoveBuild, '/build/remove', strict_slashes=False)
 api.add_resource(GetBuild, '/build/get', strict_slashes=False)
 api.add_resource(GetBuilds, '/builds/get', strict_slashes=False)
 api.add_resource(UpdateBuild, '/build/update', strict_slashes=False)
